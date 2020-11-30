@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 plt.style.use('ggplot')
 
-v = 0.2  # frequency
-a = 0.1  # amplitude
+v = 0.1  # frequency
+a = 0.2  # amplitude
 g = 9.8  # free fall acceleration
 length = 20  # length of rigid and light pendulum
 tMax = 250  # the number of seconds
@@ -44,6 +44,7 @@ while (i < len(t_list)):
                            (derivative_func(t_list[i - 1], accurate_y_list[i - 1]) +
                             derivative_func(t_list[i], approx_y_list[i])))  # accurate u [i]
     accurate_y_list.append(accurate_y_list[i - 1] + (h / 2) * (accurate_u_list[i - 1] + accurate_u_list[i]))
+    # accurate y [i]
     i += 1
 
 print(accurate_y_list)
@@ -65,7 +66,7 @@ print(w_vertical)
 fig = plt.figure()
 axes = fig.add_subplot()
 axes.set_xlim(min(x_horizontal)-1, max(x_horizontal)+1)
-axes.set_ylim(min(w_vertical)-1, max(w_vertical)+1)
+axes.set_ylim(-20, 20)
 plt.axis('square')
 
 point, = axes.plot([x_horizontal[0]],[w_vertical[0]], 'go')
